@@ -6,7 +6,7 @@ app = FastAPI(title="Resource Allocation API")
 app.add_exception_handler(Exception, global_exception_handler)
 app.include_router(prefix="/projects", router=router)
 
-@app.get('/')
+
+@app.get("/")
 def init():
     return {"status": "ok"}
-

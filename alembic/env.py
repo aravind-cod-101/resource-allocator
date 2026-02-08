@@ -15,7 +15,6 @@ from config import DATABASE_URL
 from database import BASE
 from models import Task, Skill, Resource, ResourceAvailability, ResourceSkill, Project
 
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -69,8 +68,8 @@ def run_migrations_online() -> None:
 
     """
     config = context.config
-    config.set_main_option('sqlalchemy.url', DATABASE_URL)
-    
+    config.set_main_option("sqlalchemy.url", DATABASE_URL)
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
@@ -78,9 +77,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

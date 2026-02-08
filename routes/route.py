@@ -4,4 +4,4 @@ from middlewares import verify_api_key
 
 router = APIRouter(dependencies=[Depends(verify_api_key)])
 
-router.get('/{project_id}/resources')(project_controller.match_resources)
+router.get("/{project_id}/resources")(project_controller.match_resources)

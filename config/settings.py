@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 from pydantic import Field, ValidationError
 
+
 class Settings(BaseSettings):
     DB_HOST: str = Field(..., description="Database host")
     DB_PORT: int = Field(..., description="Database port")
@@ -14,10 +15,9 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = True
 
+
 try:
-    settings = Settings() # type: ignore
+    settings = Settings()  # type: ignore
 except ValidationError as e:
     # Fail FAST if env vars are missing or invalid
-    raise RuntimeError(
-        f"Validation error on environment variables: {e}"
-    )
+    raise RuntimeError(f"Validation error on environment variables: {e}")
